@@ -1,40 +1,99 @@
 
 //Selectors
-const selectedInput = document.querySelector('.input-text');
-const selectedButton = document.querySelector('.submit-button');
-const selectedList = document.querySelector('.container-list');
+const Input = document.querySelector('.input-text')
+const AddButton = document.querySelector('.submit-button')
+const List = document.querySelector('.list')
+const Option = document.querySelector('.filter')
+
 
 //Event Listeners
-selectedButton.addEventListener('click', addTodo);
+AddButton.addEventListener('click', addTodo)
+List.addEventListener('click', deleteCheck)
+Option.addEventListener('click', filterTodo)
 
 //Functions
 
 function addTodo(event) {
-    console.log("ayyyy");
+    //Todo div
+    const newDiv = document.createElement('div')
+    newDiv.classList.add('todo')
 
-    //Todo Div
-    const newDiv = document.createElement('div');
-    newDiv.classList.add('Todo');
-
-    //Create List
-    const newTodo = document.createElement('li');
-    newTodo.innerText = 'Hellooo';
-    newTodo.classList.add('todo-item');
-    newDiv.appendChild(newTodo);
+    //Create list
+    const newTodo = document.createElement('li') //innerHTML
+    newTodo.innerText = Input.value
+    newTodo.classList.add('todo-item')
+    newDiv.appendChild(newTodo)
     
    
-    //Check mark button
-    const completedButton = document.createElement('submit-button');
-    //add image
-    newDiv.appendChild(completedButton);
+    //Check button
+    const completedButton = document.createElement('button')
+    completedButton.setAttribute("class","check-btn")
+    completedButton.innerHTML = '<img class ="check-img" src = check.png>'
+    newDiv.appendChild(completedButton)
 
-    //Delete Button
-    const deleteButton = document.createElement('submit-button');
-    //add image
-    newDiv.appendChild(deleteButton);
+    //Delete button
+    const deleteButton = document.createElement('button')
+    deleteButton.setAttribute("class","delete-btn")
+    deleteButton.innerHTML = '<img class ="delete-img" src = delete.png>'
+    newDiv.appendChild(deleteButton)
 
-    //Append to list
-    selectedList.appendChild(newDiv);
+    //Append to todo list
+    List.appendChild(newDiv)
+    
+    //Clear input
+    Input.value=""
 
+}
+
+function deleteCheck(e){
+    
+    const item = e.target
+    
+    if(item.classList[0] === "delete-btn"){
+        const parent = item.parentElement
+        parent.classList.add("fall")
+        parent.addEventListener("transitionend",function(){
+            parent.remove()
+        });
+    }
+
+    if(item.classList[0] === "check-btn"){
+        const parent = item.parentElement
+        parent.classList.toggle("checked")
+    }
+
+}
+
+function filterTodo(e){
+
+    const filtroList = List.childNodes
+
+    filtroList.forEach(function(todo){
+        switch(e.target.value){
+            case "all":
+                todo.style.display = "flex";
+                break
+            case "completed":
+                if(todo.classList.contains('completed')) {
+                    todo.style.display = 'flex'
+                }
+                else{
+                    todo.style.display = 'none';
+                }
+                break
+            case "uncompleted":
+                if(todo.classList.contains('uncompleted')) {
+                    todo.style.display = 'flex'
+                }
+                else{
+                    todo.style.display = 'none';
+                }
+                break
+        }
+    });
+
+}
+
+function saveTodos(todo){
 
 }
