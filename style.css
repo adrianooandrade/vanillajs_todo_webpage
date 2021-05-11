@@ -15,9 +15,10 @@ header{
     font-size: 3rem;
 }
 
-header,form{
+header,form, .countdown, .countdown-text{
     min-height: 20vh;
     display: flex;
+    font-size: 1.5rem;
     justify-content: center;
     align-items: center;
 }
@@ -128,4 +129,18 @@ select{
     right: 0;
     padding: 1rem;
     pointer-events: none;
+}
+
+.countdown{
+    min-width: 100vh;
+    padding: 1rem;
+    font-size: 2rem;
+    justify-content: space-between;
+    text-align: center;
+    padding-right: 8rem;
+    padding-left: 8rem;
+}
+
+.day .hour .minute .second{
+    font-size: 3rem;
 }

@@ -11,7 +11,33 @@ AddButton.addEventListener('click', addTodo)
 List.addEventListener('click', checkClick)
 Filter.addEventListener('change', filterTodo)
 document.addEventListener('DOMContentLoaded',getTodos)
+document.addEventListener('DOMContentLoaded',countdown)
+
 //Functions
+
+function countdown() {
+    const targetDate = new Date("June 30, 2021 00:00:00").getTime()
+    const currentDate = new Date().getTime()
+    const difference = targetDate - currentDate;
+
+    const second = 1000 //milliseconds
+    const minute = second * 60
+    const hour = minute * 60
+    const day = hour * 24
+
+    const renderDay = Math.floor(difference / day)
+    const renderHour = Math.floor((difference % day) / hour)
+    const renderMinute = Math.floor((difference % hour) / minute)
+    const renderSecond = Math.floor((difference % minute) / second)
+    
+    document.querySelector(".day").innerText = renderDay;
+    document.querySelector(".hour").innerText = renderHour;
+    document.querySelector(".minute").innerText = renderMinute;
+    document.querySelector(".second").innerText = renderSecond;
+
+    setInterval(countdown,1000)
+}
+
 
 function addTodo(event) {
 
@@ -164,4 +190,3 @@ function deleteTodos(tarefa){
     localStorage.setItem("lista", JSON.stringify(todos))
 
 }
-
