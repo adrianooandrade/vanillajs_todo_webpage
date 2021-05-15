@@ -1,4 +1,3 @@
-
 //Selectors
 const Input = document.querySelector('.input-text')
 const AddButton = document.querySelector('.submit-button')
@@ -39,7 +38,7 @@ function countdown() {
 }
 
 
-function addTodo(event) {
+function addTodo(_event) {
 
     if(Input.value==""){
         alert("Write something")

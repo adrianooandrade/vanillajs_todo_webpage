@@ -100,16 +100,15 @@ form button:hover{
 }
 
 .fall{
-    transform: translateY(8rem) rotateZ(20deg);
-    transition: 0.5s;
+    transform: translateY(-20rem) rotateZ(-10deg);
     opacity: 0;
+    transition: 0.7s;
 }
 
 select{
-    appearance: none;
     outline: none;
     border: none;
-    color: rgb(255, 80, 0);
+    color: rgb(0, 0, 0);
     width: 10rem;
     cursor: pointer;
     padding: 1rem;
@@ -119,16 +118,6 @@ select{
     margin:1rem;
     position: relative;
     overflow: hidden;
-}
-
-.select::after{
-    content: "\25BC";
-    position: absolute;
-    background: rgb(255, 80, 0);
-    top:0;
-    right: 0;
-    padding: 1rem;
-    pointer-events: none;
 }
 
 .countdown{
